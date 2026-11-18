@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>Futbol Kariyeri Simülatörü</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Ana içeriğe geç</a>
+  <div id="announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <header>
+    <h1>Futbol Kariyeri Simülatörü</h1>
+    <button id="contrast-toggle" type="button" aria-pressed="false">Yüksek kontrastı aç</button>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section id="screen-create" class="screen" aria-labelledby="create-title">
+      <h2 id="create-title">Oyuncu oluştur</h2>
+      <form id="create-form">
+        <label for="player-name">Oyuncu adı</label>
+        <input id="player-name" name="name" required autocomplete="name" value="Arda">
+
+        <label for="player-position">Mevki</label>
+        <select id="player-position" name="position">
+          <option value="Forvet">Forvet</option>
+          <option value="Kanat">Kanat</option>
+          <option value="Orta saha">Orta saha</option>
+          <option value="Stoper">Stoper</option>
+          <option value="Kaleci">Kaleci</option>
+        </select>
+
+        <label for="club-select">Kulüp</label>
+        <select id="club-select" name="club"></select>
+
+        <fieldset>
+          <legend>Oyuncu özellikleri</legend>
+          <label for="pace">Hız: <output id="pace-out">60</output></label>
+          <input id="pace" name="pace" type="range" min="40" max="90" value="60">
+
+          <label for="shooting">Şut: <output id="shooting-out">55</output></label>
+          <input id="shooting" name="shooting" type="range" min="40" max="90" value="55">
+
+          <label for="passing">Pas: <output id="passing-out">58</output></label>
+          <input id="passing" name="passing" type="range" min="40" max="90" value="58">
+
+          <label for="defending">Savunma: <output id="defending-out">45</output></label>
+          <input id="defending" name="defending" type="range" min="40" max="90" value="45">
+
+          <label for="fitness">Fizik: <output id="fitness-out">60</output></label>
+          <input id="fitness" name="fitness" type="range" min="40" max="90" value="60">
+        </fieldset>
+
+        <button type="submit">Kariyere başla</button>
+      </form>
+    </section>
+
+    <section id="screen-game" class="screen" aria-labelledby="game-title" hidden>
+      <h2 id="game-title">Kariyer panosu</h2>
+      <div class="dashboard">
+        <aside aria-label="Oyuncu bilgileri">
+          <h3 id="player-heading"></h3>
+          <dl id="player-summary"></dl>
+        </aside>
+
+        <div>
+          <h3>Hafta <span id="week">1</span></h3>
+          <div class="actions" aria-label="Kariyer işlemleri">
+            <button id="train-pace" type="button">Hız antrenmanı</button>
+            <button id="train-shooting" type="button">Şut antrenmanı</button>
+            <button id="train-passing" type="button">Pas antrenmanı</button>
+            <button id="play-match" type="button">Maçı oyna</button>
+          </div>
+
+          <section aria-labelledby="league-title">
+            <h3 id="league-title">Lig tablosu</h3>
+            <div id="league-table" role="table" aria-label="Lig puan durumu"></div>
+          </section>
+
+          <section aria-labelledby="match-title">
+            <h3 id="match-title">Maç özeti</h3>
+            <div id="match-log" role="log" aria-live="polite" aria-relevant="additions"></div>
+          </section>
+
+          <section aria-labelledby="career-title">
+            <h3 id="career-title">Kariyer istatistikleri</h3>
+            <dl id="career-stats"></dl>
+          </section>
+
+          <section aria-labelledby="transfers-title">
+            <h3 id="transfers-title">Transfer piyasası</h3>
+            <div id="transfer-list"></div>
+          </section>
+
+          <section aria-labelledby="achievement-title">
+            <h3 id="achievement-title">Başarılar</h3>
+            <ul id="achievements"></ul>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
